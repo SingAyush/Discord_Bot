@@ -1,7 +1,14 @@
-const Discord = require("discord.js");
+const { Client, Intents } = require("discord.js");
+
 const axios = require("axios");
 
-const client = new Discord.Client();
+const intents = new Intents([
+  Intents.FLAGS.GUILDS,
+  Intents.FLAGS.GUILD_MESSAGES,
+]);
+
+const client = new Client({ intents });
+
 const token = "";
 const api = "";
 
@@ -20,16 +27,16 @@ client.on("message", async (message) => {
 
       const topMovies = response.data.results.slice(0, 5);
 
-      const MoviesList = topMovies
+      const moviesList = topMovies
         .map((movie, index) => `${index + 1}. ${movie.title}`)
         .join("\n");
 
       const embed = new Discord.MessageEmbed()
         .setTitle("Top 5 Movies Of Current Time")
-        .setDiscrpition(MoviesList)
+        .setDescription(moviesList)
         .setColor("#0058ff");
 
-      message.channel.send(embed);
+      message.channel.send({ embeds: [embed] });
     } catch (error) {
       console.error("Error", error.message);
       message.reply("Sorry, there was an error");
