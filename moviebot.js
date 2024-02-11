@@ -39,7 +39,7 @@ client.on("message", async (message) => {
       message.channel.send({ embeds: [embed] });
     } catch (error) {
       console.error("Error", error.message);
-      message.reply("Sorry, there was an error");
+      message.reply("Sorry, there is an error");
     }
   }
 });
