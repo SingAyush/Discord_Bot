@@ -34,7 +34,7 @@ client.on("message", async (message) => {
       const embed = new Discord.MessageEmbed()
         .setTitle("Top 5 Movies Of Current Time")
         .setDescription(moviesList)
-        .setColor("#0058ff");
+        .setColor("#0858ff");
 
       message.channel.send({ embeds: [embed] });
     } catch (error) {
